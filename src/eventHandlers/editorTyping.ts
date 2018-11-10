@@ -49,16 +49,18 @@ const updateFile = (app, socket) => (data: IUpdateFileArgs) => {
 // TODO: add validation
 interface ICreateFileArgs {
   path: string[]
-  newFile: {
-    type: 'Folder' | 'File',
-  }
+  name: string
 }
 // works for files and folders
 // createFile -> newFile
 const createFile = (app, socket) => (data: ICreateFileArgs) => {
   // Broadcast message to all sockets
   console.log('createFile', data)
-  app.projectWorkspace = R.assocPath(data.path, app.projectWorkspace)
+  app.projectWorkspace = R.assocPath(
+    [...data.path, 'children', data.name],
+    { type: 'FILE', content: '' },
+    app.projectWorkspace
+  )
   app.allSockets.forEach(soc => {
     // cesta k souboru
     soc.emit('onCreateFile', data)
