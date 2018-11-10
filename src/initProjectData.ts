@@ -8,6 +8,13 @@ export default {
           'index.js': {
             type: 'FILE',
             content: 'Hello World'
+          },
+          'app.js': {
+            type: 'FILE',
+            content:
+`// this is app file bro
+// edit me plzzz
+`
           }
         }
       }
