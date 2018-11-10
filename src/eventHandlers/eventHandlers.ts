@@ -8,7 +8,7 @@ import initProjectData from '../initProjectData'
 
 const appData = {
   // TODO: wrap to worksapceState
-  opened: ['node_modules', 'abc', 'index.js'],
+  opened: ['node_modules', 'src', 'index.js'],
   projectWorkspace: initProjectData,
   allSockets: []
 }
